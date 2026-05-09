@@ -108,21 +108,56 @@ git push -u origin main
 
 ---
 
-## 第四步：部署到 Vercel（推荐，免费且快速）
+## 第四步：部署到 GitHub Pages（免费）
 
-### 4.1 创建 Vercel 账户
+### 4.1 配置 GitHub Pages
+
+项目已经配置好了 GitHub Actions 自动部署工作流：
+- 文件位置：`.github/workflows/deploy.yml`
+- 当推送到 `main` 分支时，会自动构建并部署到 GitHub Pages
+
+### 4.2 启用 GitHub Pages
+
+1. 登录 GitHub，进入你的仓库
+2. 点击 **Settings**（设置）
+3. 在左侧菜单点击 **Pages**
+4. 在 **Source** 部分：
+   - **Branch**: `gh-pages`
+   - **Folder**: `/ (root)`
+5. 点击 **Save**
+
+### 4.3 等待自动部署
+
+第一次推送代码后，GitHub Actions 会自动运行部署工作流：
+
+1. 推送代码到 main 分支
+2. 等待约 1-2 分钟
+3. 在仓库的 **Actions** 标签页查看部署状态
+4. 部署成功后，访问 `https://你的用户名.github.io/linguaflow`
+
+### 4.4 注意事项
+
+- GitHub Pages 使用 `gh-pages` 分支存储静态文件
+- 部署需要仓库是公开的（Public）
+- 自定义域名需要在 Pages 设置中配置
+
+---
+
+## 第五步：部署到 Vercel（推荐，免费且快速）
+
+### 5.1 创建 Vercel 账户
 
 1. 访问 https://vercel.com
 2. 使用 GitHub 账户登录（推荐）
 
-### 4.2 导入项目
+### 5.2 导入项目
 
 1. 点击 **Add New...** → **Project**
 2. 选择 **Import Git Repository**
 3. 在列表中找到 `linguaflow` 仓库
 4. 点击 **Import**
 
-### 4.3 配置项目
+### 5.3 配置项目
 
 Vercel 会自动检测到这是 Vite 项目。确认以下配置：
 - **Framework Preset**: Vite
@@ -130,17 +165,17 @@ Vercel 会自动检测到这是 Vite 项目。确认以下配置：
 - **Build Command**: `npm run build`
 - **Output Directory**: dist
 
-### 4.4 环境变量（如需要）
+### 5.4 环境变量（如需要）
 
 通常不需要额外配置，直接点击 **Deploy**
 
-### 4.5 等待部署
+### 5.5 等待部署
 
 部署通常需要 1-2 分钟。完成后，你会获得一个 `.vercel.app` 域名。
 
 ---
 
-## 第五步：配置自定义域名（可选）
+## 第六步：配置自定义域名（可选）
 
 如果你有自己的域名，可以：
 
@@ -150,7 +185,7 @@ Vercel 会自动检测到这是 Vite 项目。确认以下配置：
 
 ---
 
-## 第六步：更新 GitHub 仓库（可选）
+## 第七步：更新 GitHub 仓库（可选）
 
 部署成功后，可以更新 README.md 添加徽章和部署链接：
 
